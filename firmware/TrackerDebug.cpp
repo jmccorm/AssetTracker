@@ -152,7 +152,9 @@ boolean Adafruit_GPS::parse(char *nmea) {
 
   // first look if we even have one
   Serial.println("DEBUG: Evaluating NMEA sentence ---------------------- ");
-  Serial.println(nmea);
+  Serial.print("->");
+  Serial.print(nmea);
+  Serial.println("<-");
   Serial.println("------------------------------------------------");
   if (nmea[strlen(nmea)-4] == '*') {
     uint16_t sum = parseHex(nmea[strlen(nmea)-3]) * 16;
@@ -169,7 +171,8 @@ boolean Adafruit_GPS::parse(char *nmea) {
     }
     Serial.println("DEBUG: Checksum is good");
   } else {
-  	Serial.println("DEBUG: Checksum missing");
+  	Serial.print("DEBUG: Checksum missing, character in checksum position is: ");
+  	Serial.println(nmea[strlen(nmea)-4]);
   	return false;
   }
   Serial.println("DEBUG: Parsing NMEA sentence");
