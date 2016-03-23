@@ -7,7 +7,7 @@ reading the battery level, and manually requesting a GPS reading.
 ---------------------------------------------------------------*/
 
 // Getting the library
-#include "AssetTracker/AssetTracker.h"
+#include "TrackerDebug/TrackerDebug.h"
 
 // Set whether you want the device to publish data to the internet by default here.
 // 1 will Particle.publish AND Serial.print, 0 will just Serial.print
