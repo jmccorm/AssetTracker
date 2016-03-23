@@ -157,12 +157,12 @@ boolean Adafruit_GPS::parse(char *nmea) {
   Serial.print(nmea);
   Serial.println("<END");
   Serial.println("------------------------------------------------");
-  if (nmea[strlen(nmea)-4] == '*') {
-    uint16_t sum = parseHex(nmea[strlen(nmea)-3]) * 16;
-    sum += parseHex(nmea[strlen(nmea)-2]);
+  if (nmea[strlen(nmea)-3] == '*') {
+    uint16_t sum = parseHex(nmea[strlen(nmea)-2]) * 16;
+    sum += parseHex(nmea[strlen(nmea)-1]);
     
     // check checksum 
-    for (uint8_t i=2; i < (strlen(nmea)-4); i++) {
+    for (uint8_t i=2; i < (strlen(nmea)-3); i++) {
       sum ^= nmea[i];
     }
     if (sum != 0) {
@@ -420,6 +420,8 @@ char Adafruit_GPS::read(void) {
  }
   // My experiment
   if (c == '\r') {
+     if ( lineidx == 0 ) 
+       return 0;
     c = '\n';
   }
   if (c == '\n') {
