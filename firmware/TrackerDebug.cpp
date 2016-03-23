@@ -151,10 +151,11 @@ boolean Adafruit_GPS::parse(char *nmea) {
   // do checksum check
 
   // first look if we even have one
+  Serial.println("");
   Serial.println("DEBUG: Evaluating NMEA sentence ---------------------- ");
-  Serial.print("->");
+  Serial.print("BEGIN>");
   Serial.print(nmea);
-  Serial.println("<-");
+  Serial.println("<END");
   Serial.println("------------------------------------------------");
   if (nmea[strlen(nmea)-4] == '*') {
     uint16_t sum = parseHex(nmea[strlen(nmea)-3]) * 16;
@@ -175,7 +176,7 @@ boolean Adafruit_GPS::parse(char *nmea) {
   	Serial.println(nmea[strlen(nmea)-4]);
   	return false;
   }
-  Serial.println("DEBUG: Parsing NMEA sentence");
+  Serial.println("DEBUG: Continuing with NMEA sentence parser");
   int32_t degree;
   long minutes;
   char degreebuff[10];
