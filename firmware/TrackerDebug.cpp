@@ -159,7 +159,7 @@ boolean Adafruit_GPS::parse(char *nmea) {
     sum += parseHex(nmea[strlen(nmea)-2]);
     
     // check checksum 
-    for (uint8_t i=2; i < (strlen(nmea)-4); i++) {
+    for (uint8_t i=1; i < (strlen(nmea)-4); i++) {
       sum ^= nmea[i];
     }
     if (sum != 0) {
@@ -170,7 +170,9 @@ boolean Adafruit_GPS::parse(char *nmea) {
     Serial.println("DEBUG: Checksum is good");
   } else {
   	Serial.println("DEBUG: Checksum missing");
+  	return false;
   }
+  Serial.println("DEBUG: Parsing NMEA sentence");
   int32_t degree;
   long minutes;
   char degreebuff[10];
