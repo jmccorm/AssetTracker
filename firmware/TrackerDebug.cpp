@@ -162,7 +162,7 @@ boolean Adafruit_GPS::parse(char *nmea) {
     sum += parseHex(nmea[strlen(nmea)-1]);
     
     // check checksum 
-    for (uint8_t i=2; i < (strlen(nmea)-3); i++) {
+    for (uint8_t i=1; i < (strlen(nmea)-3); i++) {
       sum ^= nmea[i];
     }
     if (sum != 0) {
