@@ -1,7 +1,7 @@
 {
     "name": "TrackerDebug",
-    "version": "0.2.8",
-    "author": "Richard Whitney <richard@particle.io>",
+    "version": "0.3.0",
+    "author": "Richard Whitney <richard@particle.io> with special guess debugger Josh McCormick",
     "license": "LGPL",
     "description": "Functions to make the Asset Tracker for Electron easy to use!"
 }
