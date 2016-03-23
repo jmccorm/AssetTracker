@@ -420,13 +420,13 @@ char Adafruit_GPS::read(void) {
  }
   // My experiment
   if (c == '\r') {
-     if ( lineidx == 0 ) 
-       return 0;
     c = '\n';
   }
   if (c == '\n') {
-    if ( lineidx == 0 ) 
-       return 0;
+    if ( lineidx == 0 ) {
+    	char c = 0;
+    	return c;
+    }
     currentline[lineidx] = 0;
 
     if (currentline == line1) {
@@ -442,12 +442,12 @@ char Adafruit_GPS::read(void) {
     //Serial.println("----");
     lineidx = 0;
     recvdflag = true;
-  }
-
-  currentline[lineidx++] = c;
-  if (lineidx >= MAXLINELENGTH)
-    lineidx = MAXLINELENGTH-1;
-
+  } else
+    {
+      currentline[lineidx++] = c;
+      if (lineidx >= MAXLINELENGTH)
+        lineidx = MAXLINELENGTH-1;
+    }
   return c;
 }
 
