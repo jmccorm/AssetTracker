@@ -61,7 +61,7 @@ void loop() {
         //Particle.publish("A", pubAccel, 60, PRIVATE);
         
         // Dumps the full NMEA sentence to serial in case you're curious
-        //Serial.println(t.preNMEA());
+        Serial.println(t.preNMEA());
         
         // GPS requires a "fix" on the satellites to give good data,
         // so we should only publish data if there's a fix
