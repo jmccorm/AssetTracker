@@ -418,7 +418,13 @@ char Adafruit_GPS::read(void) {
     lineidx = 0;
     currentline[lineidx] = 0;
  }
+  // My experiment
+  if (c == '\r') {
+    c = '\n';
+  }
   if (c == '\n') {
+    if ( lineidx == 0 ) 
+       return 0;
     currentline[lineidx] = 0;
 
     if (currentline == line1) {
